@@ -1,0 +1,103 @@
+# app/config/routing.yml
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+wa72_json_rpc:
+    resource: "@Wa72JsonRpcBundle/Resources/config/routing.yml"
+    prefix:   /jsonrpc
+
+homepage:
+  path: /
+  defaults: { _controller: AppBundle:Default:index }
+
+about:
+  path: /about
+  defaults: { _controller: AppBundle:Default:about }
+
+my_subjects:
+  path: /subjects
+  defaults: { _controller: AppBundle:Default:mySubjects }
+
+my_sessions:
+  path: /sessions
+  defaults: { _controller: AppBundle:Default:mySessions }
+
+cancel_session:
+  path: /session/cancel/{id}
+  defaults: { _controller: AppBundle:Default:cancelSession }
+
+my_results:
+  path: /results
+  defaults: { _controller: AppBundle:Default:myResults }
+
+new_analysis:
+  path: /analysis/new
+  defaults: { _controller: AppBundle:Analysis:index }
+
+new_analysis_step_2:
+  path: /analysis/new/step2/{id}
+  defaults: { _controller: AppBundle:Analysis:stepTwo }
+
+new_analysis_step_3:
+  path: /analysis/new/step3/{analysis}
+  defaults: { _controller: AppBundle:Analysis:stepThree }
+
+admin_users:
+  path: /admin/users
+  defaults: { _controller: AppBundle:Admin:users }
+
+admin_subjects:
+  path: /admin/subjects
+  defaults: { _controller: AppBundle:Admin:subjects }
+
+admin_sentences:
+  path: /admin/sentences
+  defaults: { _controller: AppBundle:Admin:sentences }
+
+admin_home:
+  path: /admin
+  defaults: { _controller: AppBundle:Admin:index }
+
+admin_analysis:
+  path: /admin/analysis
+  defaults: { _controller: AppBundle:Admin:analysis }
+
+admin_process:
+  path: /admin/process
+  defaults: { _controller: AppBundle:Admin:processQueue }
+
+admin_recordings:
+  path: /admin/recordings/{analysis}
+  defaults: { _controller: AppBundle:Admin:recordings }
+
+admin_pending_analysis:
+  path: /admin/pendingAnalysis
+  defaults: { _controller: AppBundle:Admin:analysisQueue }
+
+admin_pending_analysis_view:
+  path: /admin/pendingAnalysis/{id}
+  defaults: { _controller: AppBundle:Admin:analysisQueueView }
+
+new_sentence_group:
+  path: /admin/sentenceGroup/new
+  defaults: { _controller: AppBundle:Admin:newSentenceGroup }
+
+new_sentence:
+  path: /admin/sentences/new
+  defaults: { _controller: AppBundle:Admin:newSentence }
+
+edit_sentence:
+  path: /admin/sentences/edit/{id}
+  defaults: { _controller: AppBundle:Admin:editSentence }
+
+delete_sentence:
+  path: /admin/sentences/remove/{id}
+  defaults: { _controller: AppBundle:Admin:deleteSentence }
+
+edit_sentence_group:
+  path: /admin/sentenceGroup/edit/{id}
+  defaults: { _controller: AppBundle:Admin:editSentenceGroup }
+
+delete_sentence_group:
+  path: /admin/sentenceGroup/remove/{id}
+  defaults: { _controller: AppBundle:Admin:deleteSentenceGroup }

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section id="title" class="emerald">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>My Subjects</h1>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="breadcrumb pull-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">My Subjects</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!--/#title-->
+
+    <section id="about-us" class="container">
+        {% for subject in subjects %}
+        <div class="row">
+            <div class="col-sm-6">
+                {{ subject.fullName }}
+            </div><!--/.col-sm-6-->
+            <div class="col-sm-6">
+
+            </div><!--/.col-sm-6-->
+        </div><!--/.row-->
+        {% endfor %}
+        <div class="gap"></div>
+        <!--/#meet-the-team-->
+    </section><!--/#about-us-->
+{% endblock %}

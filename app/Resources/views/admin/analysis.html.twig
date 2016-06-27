@@ -1,0 +1,44 @@
+{% extends 'admin/admin_base.html.twig' %}
+{% block content %}
+    <div class="row-fluid sortable">
+        <div class="box span12">
+            <div class="box-header" data-original-title>
+                <h2><i class="halflings-icon white user"></i><span class="break"></span>Analysis</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn-setting"><i class="halflings-icon white wrench"></i></a>
+                    <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                    <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+                </div>
+            </div>
+            <div class="box-content">
+                <table class="table table-striped table-bordered bootstrap-datatable datatable">
+                    <thead>
+                    <tr>
+                        <th>Subject</th>
+                        <th></th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for a in analysis %}
+                        <tr>
+                            <td><a href="{{ url('admin_recordings', {'analysis': a.id}) }}">{{ a.subject.fullName }}</a></td>
+                            <td class="center"></td>
+                            <td class="center">
+
+                                <a class="btn btn-info" href="{{ url('edit_sentence_group', {'id': a.id}) }}">
+                                    <i class="halflings-icon white edit"></i>
+                                </a>
+                                <a class="btn btn-danger" href="{{ url('delete_sentence_group', {'id': a.id}) }}">
+                                    <i class="halflings-icon white trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div><!--/span-->
+
+    </div><!--/row-->
+{% endblock %}

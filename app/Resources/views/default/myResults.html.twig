@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script>
+        $(document.body).on('click', '.cancel-btn', function() {
+            return !!confirm('Are you sure? This will remove any recordings that have been completed.');
+        });
+    </script>
+{% endblock %}
+{% block body %}
+    <section id="title" class="emerald">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>My Results</h1>
+                    <p>Pellentesque habitant morbi tristique senectus et netus et malesuada</p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="breadcrumb pull-right">
+                        <li><a href="{{ path('homepage') }}">Home</a></li>
+                        <li class="active">My Results</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!--/#title-->
+
+    <section id="about-us" class="container">
+        <div class="row">
+            <div class="col-sm-2">
+                <h5>Subject Name</h5>
+            </div>
+            <div class="col-sm-2"><h5>Start Date</h5></div>
+            <div class="col-sm-4"><h5>Progress</h5></div>
+            <div class="col-sm-2"><h5>Actions</h5></div>
+        </div>
+        {% for session in sessions %}
+            <div class="row">
+                <div class="col-sm-2">
+                    {{ session.subject.fullName }}
+                </div><!--/.col-sm-6-->
+                <div class="col-sm-2">
+                    {{ session.startTime|date('Y-m-d H:i:s') }}
+                </div><!--/.col-sm-6-->
+                <div class="col-sm-4">
+                    {% set percent = ((session.currentRecordingNum / session.recordings|length) * 100)|round %}
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: {{ percent }}%;">
+                            {{ percent }}% ({{ session.currentRecordingNum ~ "/" ~ session.recordings|length }})
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-1">
+                    <a class="btn btn-success btn-sm" href="{{ url('new_analysis_step_3', {'analysis': session.id}) }}">Continue</a>
+                </div>
+                <div class="col-sm-1">
+                    <a class="btn btn-danger btn-sm cancel-btn" href="{{ url('cancel_session', {'id': session.id}) }}">Cancel</a>
+                </div>
+            </div><!--/.row-->
+        {% endfor %}
+        <div class="gap"></div>
+        <!--/#meet-the-team-->
+    </section><!--/#about-us-->
+{% endblock %}

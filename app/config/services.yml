@@ -1,0 +1,40 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+parameters:
+#    parameter_name: value
+
+services:
+    service.listener:
+        class: AppBundle\EventListener\ServiceListener
+        autowire: true
+        tags:
+            - { name: doctrine.event_listener, event: postLoad }
+    sentence.service:
+        class: AppBundle\Service\SentenceService
+        autowire: true
+    recording.service:
+        class: AppBundle\Service\RecordingService
+        autowire: true
+    analysis.service:
+        class: AppBundle\Service\AnalysisService
+        autowire: true
+    recording.endpoint:
+        class: AppBundle\Service\RecordingEndpoint
+        autowire: true
+        tags:
+          - {name: wa72_jsonrpc.exposable}
+    analysis.endpoint:
+        class: AppBundle\Service\AnalysisEndpoint
+        autowire: true
+        tags:
+            - {name: wa72_jsonrpc.exposable}
+    acme_user.password_resetting:
+        class: AppBundle\EventListener\ApiTokenListener
+        arguments: [@router]
+        tags:
+            - { name: kernel.event_subscriber }
+    app.command.my_command:
+        class: AppBundle\Command\ProcessQueueCommand
+        autowire: true
+        tags:
+            -  { name: console.command }

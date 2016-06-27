@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+    <script src="{{ asset('lib/binary.js') }}"></script>
+    <script src="{{ asset('lib/re-sampler.js') }}"></script>
+    <script src="{{ asset('lib/site.js') }}"></script>
+    <script src="{{ asset('lib/rpc.js') }}"></script>
+    <script src="{{ asset('views/RecordingView.js') }}"></script>
+    <script type="text/javascript">
+        var view = new NatIntelli.App.RecordingView({{ id }}, '{{ apiToken }}', {{ currentRecording }});
+    </script>
+{% endblock %}
+{% block body %}
+    <div class="row-fluid">
+        <div class="col-lg-12 center">
+            <div id="statement">
+
+            </div>
+            <button class="btn btn-primary" id="start-rec-btn">Start Recording</button>
+            <button class="btn btn-primary" id="stop-rec-btn">Stop Recording</button><br/>
+            <span id="recordingTimer"></span>
+
+            <div id="canvas-container">
+                <canvas width="600" height="100" id="canvas"></canvas>
+            </div>
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 0%;">
+                    0%
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block footer %}{% endblock %}

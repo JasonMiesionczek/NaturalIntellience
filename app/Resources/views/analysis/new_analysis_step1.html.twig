@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section id="title" class="emerald">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Create New Analysis</h1>
+                    <p>Using one of the four available modes: Intelligence, Potential, Behavior and Thinking</p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="breadcrumb pull-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Create New Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!--/#title-->
+
+    <section id="about-us" class="container">
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <h2>Create New Subject</h2>
+                <div class="text-left">
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    {{ form_end(form) }}
+                </div>
+            </div><!--/.col-sm-6-->
+            <div class="col-sm-6 text-center">
+                <h2>Select Existing Subject</h2>
+                <div class="text-left">
+                <ul>
+                    {% for subject in subjects %}
+                    <li>
+                        <a href="{{ url('new_analysis_step_2', {'id': subject.id}) }}">{{ subject.firstName ~ " " ~ subject.lastName }}</a>
+                    </li>
+                    {% endfor %}
+                </ul>
+                </div>
+            </div><!--/.col-sm-6-->
+        </div><!--/.row-->
+
+        <div class="gap"></div>
+        <!--
+        <h1 class="center">Meet the Team</h1>
+        <p class="lead center">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
+        <div class="gap"></div>
+
+
+        <div id="meet-the-team" class="row">
+            <div class="col-md-3 col-xs-6">
+                <div class="center">
+                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team-member.jpg" alt="" ></p>
+                    <h5>David J. Robbins<small class="designation muted">Senior Vice President</small></h5>
+                    <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
+                    <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
+                </div>
+            </div>
+
+            <div class="col-md-3 col-xs-6">
+                <div class="center">
+                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team-member.jpg" alt="" ></p>
+                    <h5>David J. Robbins<small class="designation muted">Senior Vice President</small></h5>
+                    <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
+                    <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <div class="center">
+                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team-member.jpg" alt="" ></p>
+                    <h5>David J. Robbins<small class="designation muted">Senior Vice President</small></h5>
+                    <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
+                    <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
+                </div>
+            </div>
+            <div class="col-md-3 col-xs-6">
+                <div class="center">
+                    <p><img class="img-responsive img-thumbnail img-circle" src="images/team-member.jpg" alt="" ></p>
+                    <h5>David J. Robbins<small class="designation muted">Senior Vice President</small></h5>
+                    <p>Morbi accumsan ipsum velit. Nam nec tellus a odio tincidunt auctor.</p>
+                    <a class="btn btn-social btn-facebook" href="#"><i class="icon-facebook"></i></a> <a class="btn btn-social btn-google-plus" href="#"><i class="icon-google-plus"></i></a> <a class="btn btn-social btn-twitter" href="#"><i class="icon-twitter"></i></a> <a class="btn btn-social btn-linkedin" href="#"><i class="icon-linkedin"></i></a>
+                </div>
+            </div>
+        </div><!--/#meet-the-team-->
+
+    </section><!--/#about-us-->
+{% endblock %}

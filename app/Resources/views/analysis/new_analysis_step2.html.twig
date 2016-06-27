@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <section id="title" class="emerald">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+                    <h1>Create New Analysis</h1>
+                    <p>Using one of the four available modes: Intelligence, Potential, Behavior and Thinking</p>
+                </div>
+                <div class="col-sm-6">
+                    <ul class="breadcrumb pull-right">
+                        <li><a href="index.html">Home</a></li>
+                        <li class="active">Create New Analysis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section><!--/#title-->
+
+    <section id="about-us" class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h3>New Analysis for {{ subject.fullName }}</h3>
+            <h4>Please enter the issue:</h4>
+        </div>
+        <div class="gap"></div>
+        <div class="col-sm-12 text-center">
+            {{ form_start(form) }}
+            {{ form_widget(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div><!--/.row-->
+
+    <div class="gap"></div>
+    </section><!--/#about-us-->
+{% endblock %}
